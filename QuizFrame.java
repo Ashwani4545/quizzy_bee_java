@@ -22,25 +22,25 @@ public class QuizFrame extends JFrame {
     private int                 selectedOption = -1;  // -1 = none selected
 
     // ── Widgets ───────────────────────────────────────────────────────
-    private JLabel              qNumberLabel;
-    private JLabel              categoryBadge;
-    private JLabel              questionLabel;
-    private JRadioButton[]      optionBtns;    // Syllabus: Arrays
-    private ButtonGroup         btnGroup;
-    private JProgressBar        progressBar;
-    private JLabel              scoreLabel;
-    private JLabel              feedbackLabel;
-    private StyledButton        submitBtn;
-    private JPanel              feedbackPanel;
-    private JPanel              optionsPanel;
-    private Timer               feedbackTimer; // javax.swing.Timer
+    private JLabel qNumberLabel;
+    private JLabel categoryBadge;
+    private JLabel questionLabel;
+    private JRadioButton[] optionBtns;    // Syllabus: Arrays
+    private ButtonGroup btnGroup;
+    private JProgressBar progressBar;
+    private JLabel scoreLabel;
+    private JLabel feedbackLabel;
+    private StyledButton submitBtn;
+    private JPanel feedbackPanel;
+    private JPanel optionsPanel;
+    private Timer feedbackTimer; // javax.swing.Timer
 
     // --------------------------------------------------------
     // Constructor
     // --------------------------------------------------------
     public QuizFrame(String playerName, ArrayList<Question> questions) {
         this.questions = questions;
-        this.score     = new ScoreTracker(playerName, questions.size());
+        this.score = new ScoreTracker(playerName, questions.size());
         setupFrame();
         buildUI();
         loadQuestion(0);
@@ -66,9 +66,9 @@ public class QuizFrame extends JFrame {
         JPanel root = new JPanel(new BorderLayout(0, 0));
         root.setBackground(AppTheme.BG_DARK);
 
-        root.add(buildTopBar(),     BorderLayout.NORTH);
-        root.add(buildCenter(),     BorderLayout.CENTER);
-        root.add(buildBottomBar(),  BorderLayout.SOUTH);
+        root.add(buildTopBar(),BorderLayout.NORTH);
+        root.add(buildCenter(),BorderLayout.CENTER);
+        root.add(buildBottomBar(),BorderLayout.SOUTH);
 
         setContentPane(root);
     }
@@ -238,7 +238,7 @@ public class QuizFrame extends JFrame {
         selectedOption = -1;
         btnGroup.clearSelection();
 
-        Question q = questions.get(index);   // ArrayList .get()
+        Question q = questions.get(index);   // fetch questions from ArrayList
 
         // Update labels
         qNumberLabel.setText("Q" + (index + 1) + " / " + questions.size());

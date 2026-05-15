@@ -11,7 +11,7 @@ import java.util.Collections;
 public class QuestionBank {
 
     // Syllabus: Collections (ArrayList)
-    private ArrayList<Question> questions;
+    private final ArrayList<Question> questions;
 
     // --------------------------------------------------------
     // Constructor — builds the full question list

@@ -7,17 +7,16 @@
 //           ArrayList, Arrays, Timer, Exception Handling
 // =====================================================================
 
+import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 
 public class QuizFrame extends JFrame {
 
     // ── Quiz state ────────────────────────────────────────────────────
-    private ArrayList<Question> questions;  // Syllabus: ArrayList
-    private ScoreTracker        score;
+    private final ArrayList<Question> questions;  // Syllabus: ArrayList
+    private final ScoreTracker   score;
     private int                 currentIndex = 0;
     private int                 selectedOption = -1;  // -1 = none selected
 
@@ -214,7 +213,7 @@ public class QuizFrame extends JFrame {
     // buildOptionButton() — creates a styled radio button row
     // --------------------------------------------------------
     private JRadioButton buildOptionButton(String prefix) {
-        JRadioButton rb = new JRadioButton();
+        JRadioButton rb = new JRadioButton(prefix + ". ");
         rb.setFont(AppTheme.FONT_OPTION);
         rb.setForeground(AppTheme.TEXT_PRIMARY);
         rb.setBackground(AppTheme.BG_PANEL);
@@ -372,7 +371,8 @@ public class QuizFrame extends JFrame {
         } else {
             // Quiz complete — open ResultFrame
             progressBar.setValue(questions.size());
-            new ResultFrame(score);
+            ResultFrame resultFrame = new ResultFrame(score);
+            resultFrame.setVisible(true);
             dispose();
         }
     }

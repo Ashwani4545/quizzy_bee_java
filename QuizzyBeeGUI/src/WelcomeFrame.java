@@ -7,11 +7,10 @@
 //           Exception Handling, String methods
 // =====================================================================
 
+import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 
 public class WelcomeFrame extends JFrame {
 
@@ -23,7 +22,7 @@ public class WelcomeFrame extends JFrame {
     private JLabel      errorLabel;
 
     // Shared data store
-    private QuestionBank bank;
+    private final QuestionBank bank;
 
     // --------------------------------------------------------
     // Constructor — builds and shows the Welcome Screen
@@ -225,7 +224,8 @@ public class WelcomeFrame extends JFrame {
         }
 
         // Open quiz window and close welcome
-        new QuizFrame(name, quizQ);
+        QuizFrame quizFrame = new QuizFrame(name, quizQ);
+        quizFrame.setVisible(true);
         dispose();
     }
 
@@ -246,6 +246,27 @@ public class WelcomeFrame extends JFrame {
             BorderFactory.createLineBorder(AppTheme.BORDER_LINE, 1),
             new EmptyBorder(8, 12, 8, 12)
         ));
+        // simple placeholder behaviour
+        if (placeholder != null) {
+            tf.setText(placeholder);
+            tf.setForeground(AppTheme.TEXT_MUTED);
+            tf.addFocusListener(new java.awt.event.FocusAdapter() {
+                @Override
+                public void focusGained(java.awt.event.FocusEvent e) {
+                    if (tf.getText().equals(placeholder)) {
+                        tf.setText("");
+                        tf.setForeground(AppTheme.TEXT_PRIMARY);
+                    }
+                }
+                @Override
+                public void focusLost(java.awt.event.FocusEvent e) {
+                    if (tf.getText().isEmpty()) {
+                        tf.setText(placeholder);
+                        tf.setForeground(AppTheme.TEXT_MUTED);
+                    }
+                }
+            });
+        }
     }
 
     private void styleComboBox(JComboBox<String> cb) {
@@ -262,8 +283,8 @@ public class WelcomeFrame extends JFrame {
         sp.setBorder(BorderFactory.createLineBorder(AppTheme.BORDER_LINE, 1));
         sp.setPreferredSize(new Dimension(90, 34));
         JComponent editor = sp.getEditor();
-        if (editor instanceof JSpinner.DefaultEditor) {
-            JTextField tf = ((JSpinner.DefaultEditor) editor).getTextField();
+        if (editor instanceof JSpinner.DefaultEditor dex) {
+            JTextField tf = dex.getTextField();
             tf.setBackground(AppTheme.BG_PANEL);
             tf.setForeground(AppTheme.TEXT_PRIMARY);
             tf.setFont(AppTheme.FONT_BODY);

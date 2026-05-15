@@ -10,11 +10,11 @@
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.*;
+// (no event imports needed here)
 
 public class ResultFrame extends JFrame {
 
-    private ScoreTracker score;
+    private final ScoreTracker score;
 
     // --------------------------------------------------------
     // Constructor
@@ -204,7 +204,8 @@ public class ResultFrame extends JFrame {
         StyledButton playBtn = new StyledButton("🔄  Play Again", StyledButton.Style.SUCCESS);
         playBtn.setPreferredSize(new Dimension(160, 42));
         playBtn.addActionListener(e -> {
-            new WelcomeFrame();
+            WelcomeFrame welcomeFrame = new WelcomeFrame();
+            welcomeFrame.setVisible(true);
             dispose();
         });
 

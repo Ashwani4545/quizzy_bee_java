@@ -1,0 +1,21 @@
+========================================
+   QuizzyBee - Score Report
+========================================
+Player  : as
+Score   : 4/5
+Percent : 80.0%
+Grade   : A
+Message : Excellent work! Almost perfect! 🎉
+
+--- Answer Log ---
+Q1 ✔  Which planet is known as the Red Planet?
+       Your answer: Mars
+Q2 ✔  What is the speed of light (approx)?
+       Your answer: 3×10⁸ m/s
+Q3 ✔  What is the chemical symbol for water?
+       Your answer: H2O
+Q4 ✘  How many bones are in the adult human body?
+       Your answer: 196  |  Correct: 206
+Q5 ✔  What gas do plants absorb during photosynthesis?
+       Your answer: Carbon Dioxide
+========================================

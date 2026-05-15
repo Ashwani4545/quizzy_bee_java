@@ -5,8 +5,8 @@
 //           Method Overriding (paintComponent), Data Types
 // =====================================================================
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class RoundedPanel extends JPanel {
 
@@ -33,7 +33,6 @@ public class RoundedPanel extends JPanel {
     // --------------------------------------------------------
     public RoundedPanel(int radius, Color bg) {
         this(radius, bg, null);
-        this.hasBorder = false;
     }
 
     // --------------------------------------------------------

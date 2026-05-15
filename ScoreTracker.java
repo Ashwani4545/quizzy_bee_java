@@ -5,15 +5,15 @@
 //           Handling, toString(), String formatting
 // =====================================================================
 
-import java.util.ArrayList;
-import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ScoreTracker {
 
-    private String playerName;
-    private int totalQuestions;
+    private final String playerName;
+    private final int totalQuestions;
     private int correctAnswers;
 
     // Syllabus: Collections (ArrayList) — answer log

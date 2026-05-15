@@ -5,19 +5,19 @@
 //           Data Types, if/else
 // =====================================================================
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class StyledButton extends JButton {
 
     // Button style variants
     public enum Style { PRIMARY, SECONDARY, DANGER, SUCCESS }
 
-    private Color normalColor;
-    private Color hoverColor;
-    private Color pressColor;
-    private Color textColor;
+    private final Color normalColor;
+    private final Color hoverColor;
+    private final Color pressColor;
+    private final Color textColor;
     private boolean isHovered  = false;
     private boolean isPressed  = false;
     private int     radius     = 12;
@@ -31,35 +31,36 @@ public class StyledButton extends JButton {
 
         // Syllabus: switch-case
         switch (style) {
-            case PRIMARY:
+            case PRIMARY -> {
                 normalColor = AppTheme.ACCENT_GOLD;
                 hoverColor  = new Color(255, 210, 80);
                 pressColor  = new Color(220, 160, 20);
                 textColor   = new Color(20, 20, 30);
-                break;
-            case SECONDARY:
+            }
+            case SECONDARY -> {
                 normalColor = AppTheme.BG_PANEL;
                 hoverColor  = AppTheme.OPTION_HOVER;
                 pressColor  = AppTheme.BORDER_LINE;
                 textColor   = AppTheme.TEXT_PRIMARY;
-                break;
-            case DANGER:
+            }
+            case DANGER -> {
                 normalColor = AppTheme.RED_BAD;
                 hoverColor  = new Color(255, 100, 110);
                 pressColor  = new Color(200, 50, 60);
                 textColor   = Color.WHITE;
-                break;
-            case SUCCESS:
+            }
+            case SUCCESS -> {
                 normalColor = AppTheme.GREEN_GOOD;
                 hoverColor  = new Color(80, 230, 140);
                 pressColor  = new Color(30, 180, 90);
                 textColor   = new Color(10, 30, 20);
-                break;
-            default:
+            }
+            default -> {
                 normalColor = AppTheme.BG_PANEL;
                 hoverColor  = AppTheme.OPTION_HOVER;
                 pressColor  = AppTheme.BORDER_LINE;
                 textColor   = AppTheme.TEXT_PRIMARY;
+            }
         }
 
         setFocusPainted(false);

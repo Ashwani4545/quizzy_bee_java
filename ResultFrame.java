@@ -203,8 +203,8 @@ public class ResultFrame extends JFrame {
         StyledButton playBtn = new StyledButton("🔄  Play Again", StyledButton.Style.SUCCESS);
         playBtn.setPreferredSize(new Dimension(160, 42));
         playBtn.addActionListener(e -> {
-            new WelcomeFrame();
             dispose();
+            SwingUtilities.invokeLater(WelcomeFrame::new);
         });
 
         // Exit — Syllabus: Lambda

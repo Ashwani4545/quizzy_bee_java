@@ -7,17 +7,16 @@
 //           ArrayList, Arrays, Timer, Exception Handling
 // =====================================================================
 
+import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 
 public class QuizFrame extends JFrame {
 
     // ── Quiz state ────────────────────────────────────────────────────
-    private ArrayList<Question> questions;  // Syllabus: ArrayList
-    private ScoreTracker        score;
+    private final ArrayList<Question> questions;  // Syllabus: ArrayList
+    private final ScoreTracker        score;
     private int                 currentIndex = 0;
     private int                 selectedOption = -1;  // -1 = none selected
 
@@ -150,12 +149,11 @@ public class QuizFrame extends JFrame {
 
         optionBtns = new JRadioButton[4];   // Syllabus: Arrays
         btnGroup   = new ButtonGroup();
-        String[] labels = {"A", "B", "C", "D"};
 
         // for loop — Syllabus: Loops (for)
         for (int i = 0; i < 4; i++) {
             final int idx = i;
-            optionBtns[i] = buildOptionButton(labels[i]);
+            optionBtns[i] = buildOptionButton();
             btnGroup.add(optionBtns[i]);
 
             // Lambda ActionListener — Syllabus: Lambda
@@ -213,7 +211,7 @@ public class QuizFrame extends JFrame {
     // --------------------------------------------------------
     // buildOptionButton() — creates a styled radio button row
     // --------------------------------------------------------
-    private JRadioButton buildOptionButton(String prefix) {
+    private JRadioButton buildOptionButton() {
         JRadioButton rb = new JRadioButton();
         rb.setFont(AppTheme.FONT_OPTION);
         rb.setForeground(AppTheme.TEXT_PRIMARY);
@@ -372,7 +370,10 @@ public class QuizFrame extends JFrame {
         } else {
             // Quiz complete — open ResultFrame
             progressBar.setValue(questions.size());
-            new ResultFrame(score);
+            // Ensure the ResultFrame is shown. Previously the new instance was created
+            // but not displayed which caused it to be ignored.
+            ResultFrame resultFrame = new ResultFrame(score);
+            resultFrame.setVisible(true);
             dispose();
         }
     }

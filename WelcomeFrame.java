@@ -7,10 +7,10 @@
 //           Exception Handling, String methods
 // =====================================================================
 
-import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.border.*;
 
 public class WelcomeFrame extends JFrame {
 
@@ -22,7 +22,7 @@ public class WelcomeFrame extends JFrame {
     private JLabel      errorLabel;
 
     // Shared data store
-    private QuestionBank bank;
+    private final QuestionBank bank;
 
     // --------------------------------------------------------
     // Constructor — builds and shows the Welcome Screen
@@ -224,7 +224,8 @@ public class WelcomeFrame extends JFrame {
         }
 
         // Open quiz window and close welcome
-        new QuizFrame(name, quizQ);
+        // Ensure the new frame is shown — previously creating it without showing caused it to be ignored
+        new QuizFrame(name, quizQ).setVisible(true);
         dispose();
     }
 
@@ -237,8 +238,9 @@ public class WelcomeFrame extends JFrame {
     }
 
     private void styleTextField(JTextField tf, String placeholder) {
+        tf.setText(placeholder);
         tf.setFont(AppTheme.FONT_BODY);
-        tf.setForeground(AppTheme.TEXT_PRIMARY);
+        tf.setForeground(AppTheme.TEXT_MUTED);
         tf.setBackground(AppTheme.BG_PANEL);
         tf.setCaretColor(AppTheme.ACCENT_GOLD);
         tf.setBorder(BorderFactory.createCompoundBorder(
@@ -261,8 +263,8 @@ public class WelcomeFrame extends JFrame {
         sp.setBorder(BorderFactory.createLineBorder(AppTheme.BORDER_LINE, 1));
         sp.setPreferredSize(new Dimension(90, 34));
         JComponent editor = sp.getEditor();
-        if (editor instanceof JSpinner.DefaultEditor) {
-            JTextField tf = ((JSpinner.DefaultEditor) editor).getTextField();
+        if (editor instanceof JSpinner.DefaultEditor defaultEditor) {
+            JTextField tf = defaultEditor.getTextField();
             tf.setBackground(AppTheme.BG_PANEL);
             tf.setForeground(AppTheme.TEXT_PRIMARY);
             tf.setFont(AppTheme.FONT_BODY);

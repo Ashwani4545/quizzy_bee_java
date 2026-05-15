@@ -17,7 +17,7 @@ public class ScoreTracker {
     private int correctAnswers;
 
     // Syllabus: Collections (ArrayList) — answer log
-    private ArrayList<String> answerLog;
+    private final ArrayList<String> answerLog;
 
     // --------------------------------------------------------
     // Constructor
@@ -80,14 +80,14 @@ public class ScoreTracker {
     // Syllabus: switch-case
     // --------------------------------------------------------
     public String getMotivation() {
-        switch (getGrade()) {
-            case "A+": return "Outstanding! You're a QuizzyBee champion! 🏆";
-            case "A":  return "Excellent work! Almost perfect! 🎉";
-            case "B":  return "Great job! Keep it up! 👍";
-            case "C":  return "Good effort! A bit more practice needed. 🙂";
-            case "D":  return "You passed! Review the topics again. 📖";
-            default:   return "Don't give up! Practice makes perfect. 💪";
-        }
+        return switch (getGrade()) {
+            case "A+" -> "Outstanding! You're a QuizzyBee champion! 🏆";
+            case "A"  -> "Excellent work! Almost perfect! 🎉";
+            case "B"  -> "Great job! Keep it up! 👍";
+            case "C"  -> "Good effort! A bit more practice needed. 🙂";
+            case "D"  -> "You passed! Review the topics again. 📖";
+            default   -> "Don't give up! Practice makes perfect. 💪";
+        };
     }
 
     // --------------------------------------------------------
@@ -96,8 +96,7 @@ public class ScoreTracker {
     // --------------------------------------------------------
     public String saveToFile() {
         String filename = playerName.replaceAll("\\s+", "_") + "_QuizzyBee_Result.txt";
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
             bw.write("========================================\n");
             bw.write("   QuizzyBee - Score Report\n");
             bw.write("========================================\n");
@@ -116,7 +115,6 @@ public class ScoreTracker {
             }
 
             bw.write("========================================\n");
-            bw.close();
             return filename;
 
         } catch (IOException e) {

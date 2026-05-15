@@ -50,24 +50,24 @@ public class AppTheme {
 
     // ── Helper — category colour lookup ──────────────────────────────
     public static Color categoryColor(String cat) {
-        switch (cat) {
-            case "Science": return CAT_SCIENCE;
-            case "Math":    return CAT_MATH;
-            case "Tech":    return CAT_TECH;
-            case "GK":      return CAT_GK;
-            default:        return CAT_GENERAL;
-        }
+        return switch (cat) {
+            case "Science" -> CAT_SCIENCE;
+            case "Math"    -> CAT_MATH;
+            case "Tech"    -> CAT_TECH;
+            case "GK"      -> CAT_GK;
+            default        -> CAT_GENERAL;
+        };
     }
 
     // ── Helper — grade colour ─────────────────────────────────────────
     public static Color gradeColor(String grade) {
-        switch (grade) {
-            case "A+": case "A": return GREEN_GOOD;
-            case "B":            return new Color(100, 220, 120);
-            case "C":            return ACCENT_GOLD;
-            case "D":            return ACCENT_AMBER;
-            default:             return RED_BAD;
-        }
+        return switch (grade) {
+            case "A+", "A" -> GREEN_GOOD;
+            case "B"        -> new Color(100, 220, 120);
+            case "C"        -> ACCENT_GOLD;
+            case "D"        -> ACCENT_AMBER;
+            default          -> RED_BAD;
+        };
     }
 
     // Private constructor — utility class, not meant to be instantiated

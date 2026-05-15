@@ -13,7 +13,7 @@ public class RoundedPanel extends JPanel {
     private int radius;
     private Color bg;
     private Color borderColor;
-    private boolean hasBorder;
+    private final boolean hasBorder;
 
     // --------------------------------------------------------
     // Constructor 1 — with border color

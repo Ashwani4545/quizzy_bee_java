@@ -26,7 +26,7 @@ public class QuizzyBeeApp {
             UIManager.put("OptionPane.messageForeground",   AppTheme.TEXT_PRIMARY);
             UIManager.put("Button.background",              AppTheme.BG_PANEL);
             UIManager.put("Button.foreground",              AppTheme.TEXT_PRIMARY);
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException e) {
             // Silently fall back to default L&F
             System.err.println("L&F warning: " + e.getMessage());
         }
